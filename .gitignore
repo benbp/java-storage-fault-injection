@@ -1,0 +1,6 @@
+tests/target
+charts
+stress-test-resources.json
+generatedValues.yaml
+deploy-test-*.ps1
+*.log

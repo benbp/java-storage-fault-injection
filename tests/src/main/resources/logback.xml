@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOGS" value="./logs" />
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/storage.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d %p %C [%t] %m%n</Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover hourly and gzip logs -->
+            <fileNamePattern>${LOGS}/archived/storage-%d{yyyy-MM-dd-HH}.log.gz</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="com.azure" level="DEBUG" />
+
+    <!-- LOG everything at ERROR level -->
+    <root level="ERROR">
+        <appender-ref ref="RollingFile" />
+    </root>
+</configuration>
